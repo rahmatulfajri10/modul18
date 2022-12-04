@@ -13,6 +13,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+const baseUrl = process.env.REACT_APP_URL_BACKEND;
 
 const theme = createTheme();
   
@@ -35,7 +36,7 @@ const Login = () => {
       try {
         // 1. Lakukan Axios POST ke backend pada endpoint /login
         // dengan parameter 'email' dan 'pass' yang didapat dari form.
-        const response = await axios.post('http://localhost:3000/login', {
+        const response = await axios.post(`${baseUrl}/login`, {
           email: data.get('email'),
           password: data.get('password')
         })

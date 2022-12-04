@@ -11,6 +11,7 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
 
 const theme = createTheme();
+const baseUrl = process.env.REACT_APP_URL_BACKEND;
 
 function Copyright() {
     return (
@@ -47,7 +48,7 @@ const Home = () => {
         // set isLogin menjadi true. bila tidak, redirect ke halaman login
         const verify = async() =>{
             try {
-                const response = await axios.post('http://localhost:3000/verify', {
+                const response = await axios.post(`${baseUrl}/verify`, {
                 token: localStorage.getItem('token')
                 })
                 if(response.status == 200){

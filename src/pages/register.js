@@ -11,6 +11,8 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+const baseUrl = process.env.REACT_APP_URL_BACKEND;
+
 // Abaikan kode di bawah ini
 const theme = createTheme();
   
@@ -33,7 +35,7 @@ const Register = () => {
     try {
       // 1. Lakukan Axios POST ke API Register pada backend di bawah ini
       // body yang digunakan adalah username, email, dan password
-      const response = await axios.post('http://localhost:3000/register', {
+      const response = await axios.post(`${baseUrl}/register`, {
         username: data.get('username'),
         email: data.get('email'),
         password: data.get('password')
